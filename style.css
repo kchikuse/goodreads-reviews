@@ -1,0 +1,220 @@
+/*    
+
+And it shall come to pass in that day,
+that the Lord shall punish the host of the high ones that are on high,
+and the kings of the earth upon the earth
+
+*/
+
+* {
+  box-sizing: border-box
+}
+
+body {
+  margin: 0 auto; 
+  color: #333333; 
+  max-width: 60em;
+  line-height: 1.3;
+  background-color: #f5f5f5;
+  font-family: "Merriweather", "Georgia", serif;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+li { 
+  width: 100%;
+  display: flex; 
+  padding: 0.5em;
+}
+
+scroll {
+  overflow-y: auto;
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
+
+likes {
+  color: #00635D;
+  padding-top: 10px;
+}
+
+header {
+  margin: 0 0 10px 0
+}
+
+content {
+  width: 100%;
+  padding: 1em;
+  display: flex;
+  max-height: 500px;
+  background-color: #fff;
+  flex-direction: column;
+}
+content p {
+  flex: 1 0 auto
+}
+
+
+busy {
+  top: 0;
+  left: 2px;
+  color: #fff;
+  width: 90px;
+  height: 23px;
+  display: none;
+  background: red;
+  position: fixed;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+li.empty {
+  width: 100%
+}
+.empty .cover,
+.empty rating {
+  display: none
+}
+.empty input[type=number] {
+  padding: 19px;
+  font-size: 1.2em;
+}
+.empty input.busy {
+  height: 65px;
+  font-size: 25px;
+}
+
+
+.cover { 
+  margin: 0;
+  width: 272px;
+  max-height: 340px;
+}
+
+
+rating > star {
+  width: 1.1em;
+  position: relative;
+  display: inline-block;
+}
+rating > star:before {
+  left: 0; 
+  color: #FA604A;
+  content: "\2605";
+  position: absolute;
+}
+
+
+form {
+  display: flex
+}
+  form input {
+    margin: auto;
+    font-size: 16px;
+  }
+  form input[type=number] {
+    width: 68%;
+    color: #333;
+    padding: 5px;
+    -moz-appearance: textfield;
+  }
+  form input[type=number]::-webkit-inner-spin-button, 
+  form input[type=number]::-webkit-outer-spin-button { 
+    margin: 0; 
+    -webkit-appearance: none;
+  }
+  form .busy {
+    width: 30%;
+    height: 32px;
+    border: solid 1px #ccc;
+    -webkit-appearance: button;
+    background-color: lightyellow;
+  }
+
+
+li:first-of-type header {
+  margin-top: 0;
+  color: #00635D;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 0.4em;
+}
+li:first-of-type header img {
+  height: 24px;
+  width: 24px;
+  float: right;
+}
+li:first-of-type rating {
+  color: #00635D;
+  font-size: 14px;
+  margin: 12px 0 12px 0;
+}
+li:first-of-type rating > span:before {
+  color: #00635D
+}
+
+
+::-webkit-scrollbar {
+  width: 3px
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 0px
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #FA604A; 
+  -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.5); 
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255,0,0,0.4)
+}
+
+
+.goodreads rating > star:before{
+  color: #FA604A
+}
+.amazon rating > star:before {
+  color: #FFB600
+}
+.goodreads ::-webkit-scrollbar-thumb {
+  background: #FA604A
+}
+.amazon ::-webkit-scrollbar-thumb {
+  background: #FFB600
+}
+
+
+@media all and (min-width: 400px) {
+  li {
+    width: 50%
+  }
+}
+
+@media all and (max-width: 638px) {
+  li {
+    width: 100%
+  }
+  .cover {
+    width: 100%
+  }
+}
+
+@media all and (min-width: 1024px) {
+  li{
+    width: 33.33%
+  }
+  .cover {
+    margin: auto
+  }
+}
