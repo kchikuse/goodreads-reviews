@@ -1,2 +1,3 @@
-# goodreads-reviews
-Get reviews from Goodreads and Amazon
+# book reviews
+
+Uses screen scraping to get reviews for an ISBN from Amazon and Goodreads
