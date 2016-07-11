@@ -27,10 +27,14 @@ class Scraper
 
             if ( ! empty($result->reviews) )
             {
+                usort($result->reviews, function($a, $b) {
+                    return $b->likes - $a->likes;
+                });
+
                 $this->cache->store( $key, $result, 3600 );
             }
         }
-
+                
         return $result;
     }
 }
