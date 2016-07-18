@@ -22,12 +22,7 @@
 	    <li class="<?= $e->empty ?>">
 			<content>
 				
-				<header>
-					<?= $e->title ?>
-					<a href="<?= $e->toggle ?>">
-						<img src="<?= $e->icon ?>" class="busy">
-					</a>
-				</header>
+				<header><?= $e->title ?></header>
 				
 				<img src="<?= $e->cover ?>" class="cover">
 				
@@ -38,6 +33,8 @@
 					<input type="hidden" name="site" value="<?= $e->site ?>">
 					<input type="submit" value="Get" class="busy">
 				</form>
+
+				<a class="busy" href="<?= $e->toggle ?>">view <?= $e->toggletext ?> reviews</a>
 			
 			</content>
 	    </li>

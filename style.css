@@ -94,9 +94,7 @@ li.empty {
 
 
 .cover { 
-  margin: 0;
-  width: 272px;
-  max-height: 340px;
+  margin: 0 auto;
 }
 
 
@@ -114,7 +112,7 @@ rating > star:before {
 
 
 form {
-  display: flex
+ display: flex;
 }
   form input {
     margin: auto;
@@ -138,6 +136,32 @@ form {
     -webkit-appearance: button;
     background-color: lightyellow;
   }
+
+ a.busy {
+  zoom: 1; 
+  width: 68%;
+  margin: auto;
+  color: #fef4e9;
+  outline: none;
+  cursor: pointer; 
+  *display: inline;
+  text-align: center;
+  background: #f78d1d;
+  text-decoration: none; 
+  display: inline-block;
+  padding: .5em 2em .55em; 
+  vertical-align: baseline;
+  border: solid 1px #da7c0c;
+  font: 14px/100% Arial, Helvetica, sans-serif;
+  background: -moz-linear-gradient(top, #faa51a, #f47a20);
+  background: -webkit-gradient(linear, left top, left bottom, from(#faa51a), to(#f47a20));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faa51a', endColorstr='#f47a20');
+}
+a.busy:active {
+  top: 1px;
+  position: relative;
+}
+
 
 
 li:first-of-type header {
@@ -163,7 +187,7 @@ li:first-of-type rating > span:before {
 
 
 ::-webkit-scrollbar {
-  width: 3px
+  width: 7px
 }
 
 ::-webkit-scrollbar-track {
@@ -195,6 +219,7 @@ li:first-of-type rating > span:before {
 }
 
 
+
 @media all and (min-width: 400px) {
   li {
     width: 50%
@@ -212,9 +237,6 @@ li:first-of-type rating > span:before {
 
 @media all and (min-width: 1024px) {
   li{
-    width: 33.33%
-  }
-  .cover {
-    /*margin: auto*/
+    width: 50%
   }
 }

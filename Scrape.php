@@ -83,13 +83,15 @@ class Goodreads
 
         foreach ( $rows as $row ) 
         {
-            $content = trim( $row->find('.reviewText', 0)->plaintext );
+            $content = strip_tags( $row->find('.reviewText', 0)->plaintext );
+            $content = preg_replace('/\s+/', ' ', $content );
+            $content = trim( str_replace( '...more', '', $content ) );
 
-            if ( strlen($content) > 20 ) 
+            if ( strlen($content) > 100 ) 
             {
                 $reviews[] = (object) 
                 [
-                    'content' => str_replace( '...more', '', $content ),
+                    'content' => $content,
                     'rating'  => count($row->find('.staticStars .p10')),
                     'likes'   => (int) trim( $row->find('.likesCount', 0)->plaintext )
                 ];
@@ -157,11 +159,12 @@ class Amazon
 
         foreach ( $rows as $row )
         {
+            $content = strip_tags( $row->find('.a-section', 0)->plaintext );
             $likes = explode( ' ', trim($row->find('.cr-vote-buttons', 0)->plaintext) )[0];
 
             $reviews[] = (object)
             [
-                'content' => trim( $row->find('.a-section', 0)->plaintext ),
+                'content' => trim( str_replace( 'Read more &rsaquo;', '', $content ) ),
                 'rating'  => (float) trim( $row->find('.a-icon-star', 0)->plaintext ),
                 'likes'   => strtolower( $likes ) === 'one' ? 1 : ( (int) $likes ?: 0 )
             ];
@@ -211,21 +214,22 @@ function get_info( $isbn, $Site )
         $tuph = $scraper->reviews( $isbn );
     }
 
-    $empty  = empty($tuph->reviews) ? 'empty' : '';
-    $title  = empty($tuph->reviews) && $isbn ? 'book not found' : $tuph->title;
-    $toggle = sprintf( '?isbn=%s&site=%s', $isbn, $site === $sites[ 0 ] ? $sites[ 1 ] : $sites[ 0 ] );
-    $stars  = sprintf( '%s %s / %s reviews', str_repeat('<star>☆</star>', $tuph->rating), $tuph->rating, $tuph->totalr );
+    $empty      = empty($tuph->reviews) ? 'empty' : '';
+    $title      = empty($tuph->reviews) && $isbn ? 'book not found' : $tuph->title;
+    $toggle     = sprintf( '?isbn=%s&site=%s', $isbn, $site === $sites[ 0 ] ? $sites[ 1 ] : $sites[ 0 ] );
+    $toggletext = $site === $sites[ 0 ] ? $sites[ 1 ] : $sites[ 0 ];
+    $stars      = sprintf( '%s %s / %s reviews', str_repeat('<star>☆</star>', $tuph->rating), $tuph->rating, $tuph->totalr );
 
     return (object)
     [
-        'isbn'      => $isbn,
-        'site'      => $site,
-        'empty'     => $empty,
-        'title'     => $title, 
-        'stars'     => $stars,
-        'toggle'    => $toggle,
-        'cover'     => $tuph->cover,
-        'reviews'   => $tuph->reviews,
-        'icon'      => 'icons/'. $site .'.ico'
+        'isbn'          => $isbn,
+        'site'          => $site,
+        'empty'         => $empty,
+        'title'         => $title, 
+        'stars'         => $stars,
+        'toggle'        => $toggle,
+        'toggletext'    => $toggletext,
+        'cover'         => $tuph->cover,
+        'reviews'       => $tuph->reviews
     ];
 }
