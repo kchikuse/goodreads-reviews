@@ -31,7 +31,7 @@ class Scraper
                     return $b->likes - $a->likes;
                 });
 
-                $this->cache->store( $key, $result, 3600 );
+                $this->cache->store( $key, $result, 86400 );
             }
         }
                 
