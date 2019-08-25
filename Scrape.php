@@ -45,8 +45,6 @@ class Goodreads
 {
     function reviews( $isbn )
     {
-        //$url = 'http://localhost/fakesite/meta.json';
-
         $url = 'http://www.goodreads.com/book/auto_complete?format=json&q=' . $isbn;
 
         $output = [];
@@ -119,8 +117,6 @@ class Amazon
 {
     function reviews( $isbn )
     {
-        //$url = 'http://localhost/fakesite/9781447273288_Books.htm';
-
         $url = 'https://www.amazon.com/s/ref=nb_sb_noss?field-keywords=' . $isbn;
 
         $output = [];
